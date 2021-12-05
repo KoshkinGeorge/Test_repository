@@ -1,4 +1,5 @@
-print('Get out of here, Git!')
-print()
-print('Alright')
-print('I`ll be back')
+a = 10
+for i in range(a):
+    a -= 1
+    print(a)
+print('Ended')
