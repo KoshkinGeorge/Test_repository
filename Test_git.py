@@ -1,3 +1,3 @@
-print('Glad to see you, Git!')
+print('Get out of here, Git!')
 print()
 print('Alright')
