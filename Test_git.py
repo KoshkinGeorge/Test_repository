@@ -1,20 +1,25 @@
-import random
-from collections import deque
+def lowest_pos(d):
+    m = float('inf')
+    ans = None
+    for k, v in d:
+        if v < m:
+            ans = k
+            m = v
+    return ans
 
 
-graph = deque()
-way = dict()
-way['a'] = ['b', 'd']
-way['c'] = ['d', 'c']
-way['b'] = ['c', 'd']
-way['d'] = ['a', 'b', 'c', 'd', 'e']
-graph += way['a']
-checked = dict(zip(('a', 'b', 'c', 'd'), ([False for i in range(4)])))
-while graph:
-    el = graph.popleft()
-    if not checked[el] and 'e' not in way[el]:
-        graph += way[el]
-        checked[el] = True
-    elif 'e' in way[el]:
-        graph = []
-        print("Finished!")
+graph = dict()
+graph['n'] = {'a': 6, 'b': 2}
+graph['a'] = {'k': 1}
+graph['b'] = {'a': 3, 'k': 5}
+graph['k'] = {}
+costs = dict()
+costs['n'] = 0
+costs['a'] = 6
+costs['b'] = 2
+costs['k'] = float('inf')
+parents = dict()
+cur = lowest_pos(costs)
+while cur is not None:
+    negh = graph[cur]
+    for i in negh:
